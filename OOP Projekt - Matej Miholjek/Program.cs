@@ -18,7 +18,7 @@ namespace OOP_Projekt___Matej_Miholjek
             {
                 Console.Clear();
                 Meni();
-                Console.WriteLine("Odabir (1. - 6.): ");
+                Console.Write("Odabir (1. - 6.): ");
                 validator = int.TryParse(Console.ReadLine(), out selektor);
 
                 if (validator)
