@@ -26,19 +26,19 @@ namespace OOP_Projekt___Matej_Miholjek
                     switch (selektor)
                     {
                         case 1:
-
+                            vozila.Add(dodavanjeVozila());
                             break;
                         case 2:
-
+                            izmjenaVozila(vozila, odabirVozila(vozila));
                             break;
                         case 3:
-
+                            ispisVozila(vozila);
                             break;
                         case 4:
-
+                            vazeceRegistracije(vozila);
                             break;
                         case 5:
-
+                            istekleRegistracije(vozila);
                             break;
                         default:
                             if (selektor != brRedaka)
