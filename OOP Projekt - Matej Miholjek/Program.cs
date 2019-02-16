@@ -43,14 +43,14 @@ namespace OOP_Projekt___Matej_Miholjek
                         default:
                             if (selektor != brRedaka)
                             {
-
+                                ErrorMessage();
                             }
                             break;
                     }
                 }
                 else
                 {
-
+                    ErrorMessage();
                 }
                 Console.ReadKey();
             }
@@ -68,6 +68,35 @@ namespace OOP_Projekt___Matej_Miholjek
             Console.WriteLine("4. Ispis vozila sa važećom registacijom");
             Console.WriteLine("5. Ispis vozila sa isteklom registracijom");
             Console.WriteLine("6. Prekid rada programa");
+        }
+        public static Vozilo dodavanjeVozila()
+        {
+            Console.WriteLine("Unesite marku vozila: ");
+            string markaVozila = Console.ReadLine();
+
+            Console.WriteLine("Unesite model vozila: ");
+            string modelVozila = Console.ReadLine();
+
+            Vozilo vozilo = new Vozilo(markaVozila, modelVozila);
+            return vozilo;
+        }
+        public static void ispisVozila(List<Vozilo> vozila)
+        {
+            if (vozila.Count != 0)
+            {
+                foreach (Vozilo vozilo in vozila)
+                {
+                    Console.WriteLine("Marka vozila: {0} Model vozila: {1} Registracija oznaka vozila: {2}",
+                        vozilo.MarkaVozila, vozilo.ModelVozila, vozilo.RegistarskaOznaka);
+                    Console.WriteLine("Datum izdavanja registarske oznake: {0} Datum isteka registracije: {1}",
+                        vozilo.DatumIzdavanjaRegistracije, vozilo.DatumIstekaRegistracije);
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nema unesenih vozila! ");
+            }
         }
     }
 }
