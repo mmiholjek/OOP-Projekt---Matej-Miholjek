@@ -98,5 +98,94 @@ namespace OOP_Projekt___Matej_Miholjek
                 Console.WriteLine("Nema unesenih vozila! ");
             }
         }
+        public static int odabirVozila(List<Vozilo> vozila)
+        {
+            if (vozila.Count != 0)
+            {
+                int brojUListi = 1;
+                foreach (Vozilo vozilo in vozila)
+                {
+                    Console.WriteLine("{0}. Vozilo: {1}, {2}", brojUListi, vozilo.MarkaVozila, vozilo.ModelVozila);
+                    brojUListi++;
+                }
+                Console.Write("Unesite vozilo koje želite promjeniti: ");
+                int unos;
+                int.TryParse(Console.ReadLine(), out unos);
+                int index = unos - 1;
+                return index;
+            }
+            else
+            {
+                Console.WriteLine("Nema unesenih vozila! ");
+                return 0;
+            }
+        }
+        public static void izmjenaVozila(List<Vozilo> vozila, int index)
+        {
+            Console.Write("Unesite novu marku vozila: ");
+            string markaVozila = Console.ReadLine();
+
+            Console.Write("Unesite novi model vozila: ");
+            string modelVozila = Console.ReadLine();
+
+            Console.Write("Unesite registraciju vozila: ");
+            string registracijaVozila = Console.ReadLine();
+
+            Console.Write("Unesite datum izdavanja registracije(YYYY.MM.DD.): ");
+            DateTime datumIzdvanjaRegistracije = DateTime.Parse(Console.ReadLine());
+
+            Console.Write("Unesite datum isteka registracije(YYYY.MM.DD.): ");
+            DateTime datumIstekaRegistracije = DateTime.Parse(Console.ReadLine());
+
+            vozila[index].MarkaVozila = markaVozila;
+            vozila[index].ModelVozila = modelVozila;
+            vozila[index].RegistarskaOznaka = registracijaVozila;
+            vozila[index].DatumIzdavanjaRegistracije = datumIzdvanjaRegistracije;
+            vozila[index].DatumIstekaRegistracije = datumIstekaRegistracije;
+        }
+        public static void vazeceRegistracije(List<Vozilo> vozila)
+        {
+            if (vozila.Count != 0)
+            {
+                foreach (Vozilo vozilo in vozila)
+                {
+                    if (vozilo.DatumIstekaRegistracije > DateTime.Today)
+                    {
+                        Console.WriteLine("Ispis vozila sa važećom registacijom");
+                        Console.WriteLine("Marka vozila: {0} Model vozila: {1} Registracija oznaka vozila: {2}",
+                            vozilo.MarkaVozila, vozilo.ModelVozila, vozilo.RegistarskaOznaka);
+                        Console.WriteLine("Datum izdavanja registarske oznake: {0} Datum isteka registracije: {1}",
+                            vozilo.DatumIzdavanjaRegistracije, vozilo.DatumIstekaRegistracije);
+                        Console.WriteLine();
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nema vozila u listi!");
+            }
+        }
+        public static void istekleRegistracije(List<Vozilo> vozila)
+        {
+            if (vozila.Count != 0)
+            {
+                foreach (Vozilo vozilo in vozila)
+                {
+                    if (vozilo.DatumIstekaRegistracije < DateTime.Today)
+                    {
+                        Console.WriteLine("Ispis vozila sa isteklom registracijom");
+                        Console.WriteLine("Marka vozila: {0} Model vozila: {1} Registracija oznaka vozila: {2}",
+                            vozilo.MarkaVozila, vozilo.ModelVozila, vozilo.RegistarskaOznaka);
+                        Console.WriteLine("Datum izdavanja registarske oznake: {0} Datum isteka registracije: {1}",
+                            vozilo.DatumIzdavanjaRegistracije, vozilo.DatumIstekaRegistracije);
+                        Console.WriteLine();
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nema vozila u listi!");
+            }
+        }
     }
 }
