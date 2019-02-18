@@ -138,10 +138,7 @@ namespace OOP_Projekt___Matej_Miholjek
             while (true)
             {
                 Console.Write("Unesite datum izdavanja registracije(YYYY.MM.DD.): ");
-                if (DateTime.TryParse(Console.ReadLine(), out datumIzdvanjaRegistracije))
-                {
-                    break;
-                }
+                if (DateTime.TryParse(Console.ReadLine(), out datumIzdvanjaRegistracije)){break;}
                 else
                 {
                     Console.WriteLine("Pogrešan format!!!");
@@ -151,10 +148,7 @@ namespace OOP_Projekt___Matej_Miholjek
             while (true)
             {
                 Console.Write("Unesite datum isteka registracije(YYYY.MM.DD.): ");
-                if (DateTime.TryParse(Console.ReadLine(), out datumIstekaRegistracije))
-                {
-                    break;
-                }
+                if (DateTime.TryParse(Console.ReadLine(), out datumIstekaRegistracije)){break;}
                 else
                 {
                     Console.WriteLine("Pogrešan format!!!");
