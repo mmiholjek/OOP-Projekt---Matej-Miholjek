@@ -86,10 +86,11 @@ namespace OOP_Projekt___Matej_Miholjek
             {
                 foreach (Vozilo vozilo in vozila)
                 {
-                    Console.WriteLine("Marka vozila: {0} Model vozila: {1} Registracija oznaka vozila: {2}",
-                        vozilo.MarkaVozila, vozilo.ModelVozila, vozilo.RegistarskaOznaka);
-                    Console.WriteLine("Datum izdavanja registarske oznake: {0} Datum isteka registracije: {1}",
-                        vozilo.DatumIzdavanjaRegistracije, vozilo.DatumIstekaRegistracije);
+                    Console.WriteLine("Marka vozila: {0}", vozilo.MarkaVozila);
+                    Console.WriteLine("Model vozila: {0}", vozilo.ModelVozila);
+                    Console.WriteLine("Registracija oznaka vozila: {0}", vozilo.RegistarskaOznaka);
+                    Console.WriteLine("Datum izdavanja registarske oznake: {0}", vozilo.DatumIzdavanjaRegistracije);
+                    Console.WriteLine("Datum isteka registracije: {0}", vozilo.DatumIstekaRegistracije);
                     Console.WriteLine();
                 }
             }
@@ -122,6 +123,9 @@ namespace OOP_Projekt___Matej_Miholjek
         }
         public static void izmjenaVozila(List<Vozilo> vozila, int index)
         {
+            DateTime datumIzdvanjaRegistracije;
+            DateTime datumIstekaRegistracije;
+
             Console.Write("Unesite novu marku vozila: ");
             string markaVozila = Console.ReadLine();
 
@@ -130,12 +134,33 @@ namespace OOP_Projekt___Matej_Miholjek
 
             Console.Write("Unesite registraciju vozila: ");
             string registracijaVozila = Console.ReadLine();
-
-            Console.Write("Unesite datum izdavanja registracije(YYYY.MM.DD.): ");
-            DateTime datumIzdvanjaRegistracije = DateTime.Parse(Console.ReadLine());
-
-            Console.Write("Unesite datum isteka registracije(YYYY.MM.DD.): ");
-            DateTime datumIstekaRegistracije = DateTime.Parse(Console.ReadLine());
+           
+            while (true)
+            {
+                Console.Write("Unesite datum izdavanja registracije(YYYY.MM.DD.): ");
+                if (DateTime.TryParse(Console.ReadLine(), out datumIzdvanjaRegistracije))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Pogrešan format!!!");
+                    continue;
+                }
+            }
+            while (true)
+            {
+                Console.Write("Unesite datum isteka registracije(YYYY.MM.DD.): ");
+                if (DateTime.TryParse(Console.ReadLine(), out datumIstekaRegistracije))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Pogrešan format!!!");
+                    continue;
+                }
+            }
 
             vozila[index].MarkaVozila = markaVozila;
             vozila[index].ModelVozila = modelVozila;
@@ -151,11 +176,11 @@ namespace OOP_Projekt___Matej_Miholjek
                 {
                     if (vozilo.DatumIstekaRegistracije > DateTime.Today)
                     {
-                        Console.WriteLine("Ispis vozila sa važećom registacijom");
-                        Console.WriteLine("Marka vozila: {0} Model vozila: {1} Registracija oznaka vozila: {2}",
-                            vozilo.MarkaVozila, vozilo.ModelVozila, vozilo.RegistarskaOznaka);
-                        Console.WriteLine("Datum izdavanja registarske oznake: {0} Datum isteka registracije: {1}",
-                            vozilo.DatumIzdavanjaRegistracije, vozilo.DatumIstekaRegistracije);
+                        Console.WriteLine("Marka vozila: {0}", vozilo.MarkaVozila);
+                        Console.WriteLine("Model vozila: {0}", vozilo.ModelVozila);
+                        Console.WriteLine("Registracija oznaka vozila: {0}", vozilo.RegistarskaOznaka);
+                        Console.WriteLine("Datum izdavanja registarske oznake: {0}", vozilo.DatumIzdavanjaRegistracije);
+                        Console.WriteLine("Datum isteka registracije: {0}", vozilo.DatumIstekaRegistracije);
                         Console.WriteLine();
                     }
                 }
@@ -173,11 +198,11 @@ namespace OOP_Projekt___Matej_Miholjek
                 {
                     if (vozilo.DatumIstekaRegistracije < DateTime.Today)
                     {
-                        Console.WriteLine("Ispis vozila sa isteklom registracijom");
-                        Console.WriteLine("Marka vozila: {0} Model vozila: {1} Registracija oznaka vozila: {2}",
-                            vozilo.MarkaVozila, vozilo.ModelVozila, vozilo.RegistarskaOznaka);
-                        Console.WriteLine("Datum izdavanja registarske oznake: {0} Datum isteka registracije: {1}",
-                            vozilo.DatumIzdavanjaRegistracije, vozilo.DatumIstekaRegistracije);
+                        Console.WriteLine("Marka vozila: {0}", vozilo.MarkaVozila);
+                        Console.WriteLine("Model vozila: {0}", vozilo.ModelVozila);
+                        Console.WriteLine("Registracija oznaka vozila: {0}", vozilo.RegistarskaOznaka);
+                        Console.WriteLine("Datum izdavanja registarske oznake: {0}", vozilo.DatumIzdavanjaRegistracije);
+                        Console.WriteLine("Datum isteka registracije: {0}", vozilo.DatumIstekaRegistracije);
                         Console.WriteLine();
                     }
                 }
